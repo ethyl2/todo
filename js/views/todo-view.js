@@ -24,7 +24,7 @@ var app = app || {};
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
 			'blur .edit': 'close',
-			'click .priority-btn': 'togglePriority'
+			'click .priority-btn': 'togglePrioritySet'
 		},
 
 		// The TodoView listens for changes to its model, re-rendering. Since
@@ -52,6 +52,7 @@ var app = app || {};
 
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
+			this.$el.toggleClass('priority', this.model.get('priority'));
 			this.toggleVisible();
 			this.$input = this.$('.edit');
 			return this;
@@ -72,14 +73,9 @@ var app = app || {};
 			this.model.toggle();
 		},
 
-		// Toggle the 'priority' class of the li.
-		togglePriority: function () {
-			if (!this.$el.hasClass('priority')) {
-				this.$el.addClass('priority');
-			}
-			else {
-				this.$el.removeClass('priority');
-			}
+		// Toggle the `"priority"` state of the model.
+		togglePrioritySet: function () {
+			this.model.togglePriority();
 		},
 
 		// Switch this view into `"editing"` mode, displaying the input field.
