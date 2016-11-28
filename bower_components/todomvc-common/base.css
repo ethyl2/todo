@@ -250,6 +250,33 @@ label[for='toggle-all'] {
 	content: '!';
 }
 
+#todo-list li .time-sensitive-btn {
+	display: none;
+	height: auto;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 44px;
+	padding: 0 4px;
+	/*background-color: #fcfcfc;*/
+	/*color: #d00;*/
+	z-index: 10;
+	/* Mobile Safari */
+	border: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+#todo-list li:hover .time-sensitive-btn {
+	display: block;
+}
+
+#todo-list li .time-sensitive-btn:after {
+	content: '⌚';
+}
+
 #todo-list li .toggle:after {
 	content: '✔';
 	/* 40 + a couple of pixels visual adjustment */
@@ -270,7 +297,7 @@ label[for='toggle-all'] {
 	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
-	margin-left: 45px;
+	margin-left: 55px;
 	display: block;
 	line-height: 1.2;
 	-webkit-transition: color 0.4s;
@@ -294,6 +321,16 @@ label[for='toggle-all'] {
 
 #todo-list li.priority .priority-btn:after {
 	color: #d66;
+}
+
+#todo-list li.time-sensitive:not(.completed) label {
+	font-style: italic;
+	font-weight: bold;
+	background-color: #F9F9B2;
+}
+
+#todo-list li.time-sensitive .time-sensitive-btn:after {
+
 }
 
 #todo-list li .destroy,
